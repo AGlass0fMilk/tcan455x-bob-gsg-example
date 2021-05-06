@@ -1,0 +1,14 @@
+{
+    "config": {
+        "has-two-tcans": {
+            "help": "Disable this if you just want to use the example to sniff for packets from an existing CAN bus",
+            "value": true
+        }
+    },
+    "target_overrides": {
+        "*": {
+            "platform.stdio-baud-rate": 115200,
+            "target.features_add": ["EXPERIMENTAL_API"]
+        }
+    }
+}
