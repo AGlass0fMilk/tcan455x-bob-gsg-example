@@ -72,20 +72,12 @@ int main()
     events::EventQueue queue;
     printf("TCAN455x BoB Getting Started Guide Example\n");
 
-    /* Important, you must initialize the TCAN455x driver */
-    can1.init();
-//    can1.filter(1337, 0x7FF, CANStandard);
-
-#if MBED_CONF_APP_HAS_TWO_TCANS
-    can2.init();
-#endif
-
     /* Send a packet every 1 second, check for new packets every 200ms */
 #if MBED_CONF_APP_HAS_TWO_TCANS
     queue.call_every(1s, mbed::callback(send));
 #endif
 
-    queue.call_every(1s, mbed::callback(receive));
+    queue.call_every(200ms, mbed::callback(receive));
 
     queue.dispatch_forever();
 
